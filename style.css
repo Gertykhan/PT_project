@@ -48,6 +48,19 @@ p {
     margin-right: 40px;
 }
 
+#myButton {
+    font-size: 2rem;
+    margin-right: 20rem;
+    margin-top: 1rem;
+}
+
+#demo img {
+    position: absolute;
+    bottom: 150px;
+    left: 700px;
+    width: 300px;
+}
+
 
 @keyframes myAnim {
 
