@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacquard+24&display=swap');
+
+body {
+    font-family: "Jacquard 24", serif;
+    font-size: 32px;
+    background: linear-gradient(190deg, #b938ff 0%, #0300c2 100%);
+}
+
+p {
+    color: rgb(48, 159, 250);
+}
+
+
+.bi-yin-yang {
+    font-size: 4rem;
+    position: relative;
+    bottom: 11px;
+}
+
+.bi-yin-yang:hover {
+    animation: myAnim 0.5s ease 0s 1 normal forwards;
+}
+
+.carousel-inner {
+    width: 450px;
+    height: 700px;
+}
+
+.carousel-control-next {
+    position: absolute;
+    right: 165px;
+}
+
+.navbar {
+    background-color: rgba(184, 21, 175, 0.205);
+    border-width: 0 0 2px 0;
+    /* top right bottom left */
+    border-style: solid;
+    border-color: rgb(136, 1, 136);
+}
+
+.navbar-brand {
+    padding: 0;
+    height: 64px;
+}
+
+#reg {
+    margin-right: 40px;
+}
+
+
+@keyframes myAnim {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
