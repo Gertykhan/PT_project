@@ -10,6 +10,9 @@ p {
     color: rgb(48, 159, 250);
 }
 
+h1 {
+    color: #000000;
+}
 
 .bi-yin-yang {
     font-size: 4rem;
@@ -44,6 +47,10 @@ p {
     height: 64px;
 }
 
+.btn.btn-dark {
+    font-size: 1.5rem;
+}
+
 #reg {
     margin-right: 40px;
 }
@@ -54,6 +61,11 @@ p {
     margin-top: 1rem;
 }
 
+#autor {
+    font-size: 20px;
+    font-style: none;
+}
+
 #demo img {
     position: absolute;
     bottom: 150px;
@@ -61,6 +73,27 @@ p {
     width: 300px;
 }
 
+#Anchor {
+    display: inline-block;
+    height: 1000px;
+    position: relative;
+    bottom: 0px;
+}
+
+#leg_form {
+    width: 20rem;
+}
+
+#leg_form_2 {
+    width: 40rem;
+    color: #000000;
+}
+
+#reg_form {
+    border: 4px groove #000000;
+    border-radius: 45px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
 
 @keyframes myAnim {
 

@@ -48,7 +48,7 @@
                         </div>
                         <form class="d-flex text-light" role="search" id="reg">
                             <div class="nav-item">
-                                <a class="nav-link" href="#">Registration</a>
+                                <a class="nav-link" href="/index.php">Registration</a>
                             </div>
                         </form>
                     </div>
@@ -101,18 +101,39 @@
                         Click me!
                     </button>
                 </div>
-                <div class="row">
-                    <div class="d-flex col-lg-12 justify-content-center">
-                        <p id="demo"></p>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="d-flex col-lg-12 justify-content-center">
+                    <p id="demo"></p>
                 </div>
-
+            </div>
+            <div class="row">
+                <div class="d-flex col-lg-12 justify-content-center">
+                    <h1>Привет, <?php echo $_COOKIE['User'];?></h1>
+                </div>
+            </div>
+            <div class="row mb-5">
+                <div class="d-flex col-lg-12 justify-content-center">
+                    <form method='POST' action='profile.php' enctype="multipart/form-data" name="upload">
+                        <legend class="text-center" id="leg_form_2">Ваша статья</legend>
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="Input Header" aria-label="default input example" name="title">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" placeholder="Text..." rows="12" name="text"></textarea>
+                        </div>
+                        <div class="mb-2 d-flex justify-content-center">
+                            <input class="form-control form-control-sm" type="file" name="file" /><br>    
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <button type="submit" class="btn btn-dark" name="submit">Submit</button>     
+                        </div>
+                    </form>
+                </div>   
             </div>
         </div>
     </main>
-    <footer>
-        <span>alt+w to wrap</span>
-    </footer>
+
     <script type="text/JavaScript" src="script.js"></script>
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -123,5 +144,37 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"></script>
 </body>
-
 </html>
+<?php
+require_once('db.php');
+
+$link = mysqli_connect('127.0.0.1', 'root', 'kali', 'first');
+
+if (isset($_POST['submit'])) {
+    $title = $_POST['title'];
+    $main_text = $_POST['text'];
+
+    if (!$title || !$main_text) die ("Заполните все поля");
+
+    $sql = "INSERT INTO posts (title, main_text) VALUES ('$title', '$main_text')";
+
+    if (!mysqli_query($link, $sql)){
+        echo "Не удалось добавить пользователя";
+    }
+}
+if(!empty($_FILES["file"]))
+    {
+        if (((@$_FILES["file"]["type"] == "image/gif") || (@$_FILES["file"]["type"] == "image/jpeg")
+        || (@$_FILES["file"]["type"] == "image/jpg") || (@$_FILES["file"]["type"] == "image/pjpeg")
+        || (@$_FILES["file"]["type"] == "image/x-png") || (@$_FILES["file"]["type"] == "image/png"))
+        && (@$_FILES["file"]["size"] < 102400))
+        {
+            move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $_FILES["file"]["name"]);
+            echo "Load in:  " . "upload/" . $_FILES["file"]["name"];
+        }
+        else
+        {
+            echo "upload failed!";
+        }
+    }
+?>
